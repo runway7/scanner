@@ -15,4 +15,4 @@ http://scanner.runway7.net/?url=http://www.google.com&path=title,meta[name=%22de
 http://scanner.runway7.net/?url=http://www.reddit.com&path=.sitetable%20.thing%20.entry%20a.title
 
 
-Designed and Crafted in India by [Sudhir Jonathan](http://www.sudhirjonathan.com).
+Crafted in India by [Sudhir Jonathan](http://www.sudhirjonathan.com).
