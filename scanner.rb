@@ -19,25 +19,44 @@ class Reader
   end
 end
 
-def read url
-  response = HTTParty.get url
+def read link
+  response = HTTParty.get link
   Reader.new Nokogiri::HTML(response.body)
 end
 
 def doc
-  @doc ||= read params[:url]
+  @doc ||= read link
 end
 
 def paths
-  @paths ||= params[:path].split(',').map(&:strip)
+  @paths ||= params[:path].split(',').map(&:strip) rescue []
 end
 
 def json obj
   JSON.dump obj
 end
 
+def homepage
+  {
+    status: 'OK',
+    source: 'https://github.com/runway7/scanner'
+  }.merge usage
+end
+
+def link
+  params[:url].strip rescue ''
+end
+
+def usage
+  {
+    usage: 'http://scanner.runway7.net?url={{url}}&paths={{paths}}',
+    details: 'Make sure the {{url}} has the scheme (http or https), and that the {{paths}} are comma separated. And your framework should do this automatically, but URL encode everything. Especially `#` characters in your paths.'
+  }
+end
+
 get '/' do
-  content_type 'application/json'
-  return json({status: 'OK'}) if not params[:url]
+  content_type 'application/json'  
+  return json homepage if link.empty? and paths.empty?
+  return json usage if link.empty? or paths.empty?
   json paths.reduce({}) { |set, path| set.update Hash[path, doc.read(path)] }
 end
