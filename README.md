@@ -12,7 +12,11 @@ Examples:
 
 http://scanner.runway7.net/?url=http://www.google.com&path=title,meta[name=%22description%22]
 
+http://scanner.runway7.net/?url=http://news.ycombinator.com&path=td.title%20a
+
 http://scanner.runway7.net/?url=http://www.reddit.com&path=.sitetable%20.thing%20.entry%20a.title
+
+If you intend to use Scanner for production or any high-volume work, please deploy your own instance. [Heroku](http://www.heroku.com/) works great.  
 
 
 Crafted in India by [Sudhir Jonathan](http://www.sudhirjonathan.com).
