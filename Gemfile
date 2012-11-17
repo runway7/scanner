@@ -3,7 +3,7 @@ ruby '2.0.0'
 gem 'sinatra'
 gem 'nokogiri'
 gem 'httparty'
-gem 'thin'
+gem 'unicorn'
 
 group :development, :test do
   gem "rack-test", require: "rack/test"
